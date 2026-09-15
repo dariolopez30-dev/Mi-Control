@@ -1,0 +1,10 @@
+{
+  "name": "Mi Control",
+  "short_name": "Mi Control",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4f7f5",
+  "theme_color": "#16a34a",
+  "lang": "es",
+  "description": "Control de calorías, comidas y peso semanal."
+}
