@@ -20,7 +20,7 @@ button{font:inherit;cursor:pointer}.primary{border:0;background:var(--green);col
 .row{display:flex;align-items:center;justify-content:space-between;gap:10px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:#f0f7f1;border-radius:13px;padding:10px;text-align:center}.metric b{display:block;font-size:17px}.metric span{font-size:12px;color:var(--muted)}
 .bar{height:12px;background:#e8eee9;border-radius:20px;overflow:hidden}.bar div{height:100%;background:var(--green);border-radius:20px}
 .meal{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:transparent;border:0;border-top:1px solid var(--line);padding:14px 0;color:inherit}.meal:first-child{border-top:0}.mealicon{width:43px;height:43px;background:#f0f5f1;border-radius:13px;display:grid;place-items:center;font-size:22px;flex:none}
-.food{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:11px 0}.danger{border:0;background:transparent;color:#dc2626;padding:4px}
+.food{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:11px 0}.danger{border:0;background:transparent;color:#dc2626;padding:4px}.habit{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px;background:#fff}.habit b{font-size:15px}
 input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--text);font:inherit}label{display:block;font-size:13px;font-weight:700;margin:10px 0 6px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .hidden{display:none!important}.notice{background:#fff8df;border:1px solid #f0d98c;border-radius:13px;padding:12px;font-size:13px;color:#6d5411}
 svg{width:100%;height:auto;display:block}
@@ -42,6 +42,7 @@ svg{width:100%;height:auto;display:block}
 <div class="grid" style="margin-top:15px"><div class="metric"><b id="p">0 g</b><span>Proteínas</span></div><div class="metric"><b id="c">0 g</b><span>Hidratos</span></div><div class="metric"><b id="f">0 g</b><span>Grasas</span></div></div>
 </div>
 <div class="card"><div class="row" style="margin-bottom:4px"><h2 style="font-size:18px">Mis comidas</h2><span class="small muted">Añade alimentos</span></div><div id="meals"></div></div>
+<div class="card"><div class="row"><div><h2 style="font-size:18px">⭐ Comidas habituales</h2><p class="muted small" style="margin-top:4px">Guarda tus comidas repetidas y añádelas con un toque.</p></div></div><div id="habits"></div></div>
 <button class="primary" style="width:100%" id="openAdd">＋ Añadir alimento</button>
 <div class="card hidden" id="addBox">
 <div class="row"><h2 style="font-size:18px">Añadir alimento</h2><button class="secondary" id="closeAdd">✕</button></div>
@@ -65,7 +66,7 @@ svg{width:100%;height:auto;display:block}
 </main>
 <script>
 const meals=[['breakfast','Desayuno','🌅'],['lunch','Comida','🍽️'],['snack','Merienda','☕'],['dinner','Cena','🌙']];
-const state={goal:2200,date:key(new Date()),foods:{},weights:[]};
+const state={goal:2200,date:key(new Date()),foods:{},weights:[],habits:[]};
 const $=id=>document.getElementById(id);
 function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
 function dateObj(s){let a=s.split('-').map(Number);return new Date(a[0],a[1]-1,a[2])}
@@ -79,22 +80,56 @@ function render(){
  let t=total();$('total').textContent=Math.round(t.kcal).toLocaleString('es-ES');$('goal').textContent=state.goal.toLocaleString('es-ES');
  $('remaining').textContent=t.kcal<=state.goal?Math.round(state.goal-t.kcal)+' restantes':'-'+Math.round(t.kcal-state.goal)+' por encima';$('remaining').style.color=t.kcal>state.goal?'#dc2626':'var(--green)';
  $('fill').style.width=Math.min(100,t.kcal/state.goal*100)+'%';$('p').textContent=Math.round(t.p*10)/10+' g';$('c').textContent=Math.round(t.c*10)/10+' g';$('f').textContent=Math.round(t.f*10)/10+' g';
- $('meals').innerHTML=meals.map(m=>{let fs=list().filter(f=>f.meal===m[0]),sum=fs.reduce((a,f)=>a+f.kcal,0);return `<div><button class="meal" data-meal="${m[0]}"><span class="mealicon">${m[2]}</span><span style="flex:1"><b>${m[1]}</b><span class="small muted" style="display:block">${fs.length} alimento${fs.length===1?'':'s'}</span></span><b>${Math.round(sum)} kcal</b><span class="muted">›</span></button><div>${fs.map(f=>`<div class="food"><div><b>${esc(f.name)}</b><div class="small muted">${esc(f.amount||'')} ${f.amount?'· ':''}P ${f.p}g · HC ${f.c}g · G ${f.f}g</div></div><div style="display:flex;align-items:center;gap:5px"><b style="white-space:nowrap">${Math.round(f.kcal)} kcal</b><button class="danger" data-del="${f.id}" aria-label="Eliminar">✕</button></div></div>`).join('')}</div></div>`}).join('');
- document.querySelectorAll('[data-meal]').forEach(b=>b.onclick=()=>openAdd(b.dataset.meal));document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{state.foods[state.date]=list().filter(f=>f.id!==b.dataset.del);save();render()});
- renderHistory();renderWeights();
+ $('meals').innerHTML=meals.map(m=>{let fs=list().filter(f=>f.meal===m[0]),sum=fs.reduce((a,f)=>a+f.kcal,0);return `<div><button class="meal" data-meal="${m[0]}"><span class="mealicon">${m[2]}</span><span style="flex:1"><b>${m[1]}</b><span class="small muted" style="display:block">${fs.length} alimento${fs.length===1?'':'s'}</span></span><b>${Math.round(sum)} kcal</b><span class="muted">›</span></button><div>${fs.map(f=>`<div class="food"><div><b>${esc(f.name)}</b><div class="small muted">${esc(f.amount||'')} ${f.amount?'· ':''}P ${f.p}g · HC ${f.c}g · G ${f.f}g</div></div><div style="display:flex;align-items:center;gap:5px"><b style="white-space:nowrap">${Math.round(f.kcal)} kcal</b><button class="danger" data-del="${f.id}" aria-label="Eliminar">✕</button></div></div>`).join('')}</div>${fs.length?`<button class="secondary small" style="margin:6px 0 2px" data-savehabit="${m[0]}">⭐ Guardar como habitual</button>`:''}</div>`}).join('');
+ document.querySelectorAll('[data-meal]').forEach(b=>b.onclick=()=>openAdd(b.dataset.meal));document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{state.foods[state.date]=list().filter(f=>f.id!==b.dataset.del);save();render()});document.querySelectorAll('[data-savehabit]').forEach(b=>b.onclick=()=>saveHabit(b.dataset.savehabit));
+ renderHistory();renderWeights();renderHabits();
 }
 function openAdd(meal){$('meal').value=meal||'breakfast';$('addBox').classList.remove('hidden');$('name').focus()}
 function closeAdd(){$('addBox').classList.add('hidden')}
 function saveFood(){let name=$('name').value.trim(),k=Number($('kcal').value);if(!name||!Number.isFinite(k)||k<0){$('error').textContent='Indica el alimento y unas calorías válidas.';return}if(!state.foods[state.date])state.foods[state.date]=[];state.foods[state.date].push({id:Date.now()+Math.random(),meal:$('meal').value,name,kcal:k,amount:$('amount').value.trim(),p:n('protein'),c:n('carbs'),f:n('fat')});['name','kcal','amount','protein','carbs','fat'].forEach(id=>$(id).value='');$('error').textContent='';closeAdd();save();render()}
+function saveHabit(mealId){
+ let fs=list().filter(f=>f.meal===mealId);if(!fs.length)return;
+ let mealName=meals.find(m=>m[0]===mealId)?.[1]||'Comida';
+ let name=prompt('Nombre de la comida habitual:',mealName+' habitual');if(!name)return;
+ state.habits.push({id:Date.now()+Math.random(),name:name.trim()||mealName,meal:mealId,foods:fs.map(f=>({name:f.name,kcal:f.kcal,amount:f.amount||'',p:f.p,c:f.c,f:f.f}))});
+ save();render();
+}
+function addHabit(id){
+ let h=state.habits.find(x=>String(x.id)===String(id));if(!h)return;
+ if(!state.foods[state.date])state.foods[state.date]=[];
+ h.foods.forEach(f=>state.foods[state.date].push({...f,id:Date.now()+Math.random(),meal:h.meal}));
+ save();render();
+}
+function deleteHabit(id){state.habits=state.habits.filter(x=>String(x.id)!==String(id));save();renderHabits()}
+function renderHabits(){
+ let el=$('habits');if(!state.habits.length){el.innerHTML='<p class="muted small" style="margin-top:10px">Todavía no tienes comidas habituales. Añade una comida y pulsa “Guardar como habitual”.</p>';return}
+ el.innerHTML=state.habits.map(h=>{let kcal=h.foods.reduce((a,f)=>a+Number(f.kcal||0),0);return `<div class="habit"><div class="row"><div><b>${esc(h.name)}</b><div class="small muted">${h.foods.length} alimento${h.foods.length===1?'':'s'} · ${Math.round(kcal)} kcal</div></div><div style="display:flex;gap:6px"><button class="primary small" data-addhabit="${h.id}">Añadir</button><button class="danger" data-delhabit="${h.id}">✕</button></div></div></div>`}).join('');
+ document.querySelectorAll('[data-addhabit]').forEach(b=>b.onclick=()=>addHabit(b.dataset.addhabit));document.querySelectorAll('[data-delhabit]').forEach(b=>b.onclick=()=>{if(confirm('¿Eliminar esta comida habitual?'))deleteHabit(b.dataset.delhabit)});
+}
 function renderHistory(){let ks=Object.keys(state.foods).filter(k=>state.foods[k].length).sort().reverse();$('foodHistory').innerHTML=ks.length?ks.map(k=>`<div class="food"><span>${esc(dateText(k))}</span><b>${Math.round(state.foods[k].reduce((a,f)=>a+f.kcal,0))} kcal</b></div>`).join(''):'<p class="muted small">Todavía no hay registros.</p>'}
 function renderWeights(){let ws=[...state.weights].sort((a,b)=>a.date.localeCompare(b.date));$('weightList').innerHTML=ws.length?[...ws].reverse().map(w=>`<div class="food"><span>${esc(dateText(w.date))}</span><b>${w.value.toLocaleString('es-ES')} kg</b></div>`).join(''):'<p class="muted small">Aún no hay pesajes.</p>';let last=ws[ws.length-1];$('latest').innerHTML=last?`<div class="row"><span class="muted">Último peso</span><b>${last.value.toLocaleString('es-ES')} kg</b></div>`:'';if(ws.length<2){$('chart').innerHTML='<p class="muted small">Registra al menos dos pesajes para ver la gráfica.</p>';return}let min=Math.min(...ws.map(w=>w.value)),max=Math.max(...ws.map(w=>w.value)),range=Math.max(1,max-min),W=600,H=220,pad=35;let pts=ws.map((w,i)=>({x:pad+i*(W-2*pad)/(ws.length-1),y:20+(max-w.value)/range*150,v:w.value,d:w.date}));let path=pts.map((p,i)=>(i?'L':'M')+p.x+','+p.y).join(' ');$('chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Evolución del peso"><line x1="${pad}" y1="20" x2="${pad}" y2="170" stroke="#dfe8e1"/><line x1="${pad}" y1="170" x2="${W-pad}" y2="170" stroke="#dfe8e1"/><text x="3" y="25" font-size="12" fill="#6b7b71">${max.toFixed(1)}</text><text x="3" y="170" font-size="12" fill="#6b7b71">${min.toFixed(1)}</text><path d="${path}" fill="none" stroke="#16a34a" stroke-width="3" stroke-linecap="round"/>${pts.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="#16a34a"><title>${p.d}: ${p.v} kg</title></circle>`).join('')}</svg>`}
 function save(){try{localStorage.setItem('mi-control-v1',JSON.stringify(state))}catch(e){}}
-function load(){try{let x=JSON.parse(localStorage.getItem('mi-control-v1'));if(x){state.goal=x.goal||2200;state.date=x.date||state.date;state.foods=x.foods||{};state.weights=x.weights||[]}}catch(e){}}
+function load(){try{let x=JSON.parse(localStorage.getItem('mi-control-v1'));if(x){state.goal=x.goal||2200;state.date=x.date||state.date;state.foods=x.foods||{};state.weights=x.weights||[];state.habits=x.habits||[]}}catch(e){}}
 document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['today','history','weight'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab))});
 $('prev').onclick=()=>{let d=dateObj(state.date);d.setDate(d.getDate()-1);state.date=key(d);render()};$('next').onclick=()=>{let d=dateObj(state.date);d.setDate(d.getDate()+1);state.date=key(d);render()};
 $('openAdd').onclick=()=>openAdd();$('closeAdd').onclick=closeAdd;$('saveFood').onclick=saveFood;
 $('weightDate').value=state.date;$('saveWeight').onclick=()=>{let v=Number($('weightValue').value),d=$('weightDate').value;if(!d||!Number.isFinite(v)||v<20||v>400){$('weightError').textContent='Introduce un peso válido y una fecha.';return}let i=state.weights.findIndex(w=>w.date===d);if(i>=0)state.weights[i].value=v;else state.weights.push({date:d,value:v});$('weightValue').value='';$('weightError').textContent='';save();renderWeights()};
 load();render();
 </script>
+
+<section id="settings" class="tab-content">
+  <div class="card">
+    <h2>⚙️ Ajustes</h2>
+    <p>Modifica tu objetivo diario de calorías.</p>
+    <label for="calorieGoal">Calorías objetivo al día</label>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:8px">
+      <input id="calorieGoal" type="number" min="500" max="10000" step="50" inputmode="numeric" style="flex:1">
+      <span>kcal</span>
+    </div>
+    <button id="saveCalorieGoal" class="primary" style="margin-top:12px">Guardar objetivo</button>
+    <p id="goalSaved" style="display:none">✅ Objetivo guardado.</p>
+  </div>
+</section>
+
 </body>
 </html>
