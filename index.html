@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#16a34a">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -10,250 +10,159 @@
 <link rel="manifest" href="manifest.webmanifest">
 <title>Mi Control</title>
 <style>
-:root{--green:#16a34a;--bg:#f4f7f5;--card:#fff;--text:#14251b;--muted:#6b7b71;--line:#dfe8e1}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-main{max-width:700px;margin:auto;padding:18px 14px 90px}.head{display:flex;align-items:center;gap:12px;margin-bottom:18px}.logo{width:52px;height:52px;border-radius:17px;background:var(--green);color:#fff;display:grid;place-items:center;font-size:29px}
-h1,h2,h3,p{margin:0}.muted{color:var(--muted)}.small{font-size:13px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px;margin:12px 0}
-nav{display:flex;background:#e8f0ea;border-radius:14px;padding:4px;margin-bottom:15px;gap:4px}nav button{flex:1;border:0;background:transparent;padding:10px 3px;border-radius:11px;font-weight:700;color:var(--muted);font-size:13px}nav button.active{background:#fff;color:var(--green);box-shadow:0 1px 4px #0000000c}
-button{font:inherit;cursor:pointer}.primary{border:0;background:var(--green);color:#fff;padding:12px 15px;border-radius:12px;font-weight:700}.secondary{border:1px solid var(--line);background:#fff;color:var(--text);padding:10px 13px;border-radius:12px;font-weight:600}
-.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.metric{background:#f0f7f1;border-radius:13px;padding:10px;text-align:center}.metric b{display:block;font-size:17px}.metric span{font-size:12px;color:var(--muted)}
-.bar{height:12px;background:#e8eee9;border-radius:20px;overflow:hidden}.bar div{height:100%;background:var(--green);border-radius:20px}
-.meal{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:transparent;border:0;border-top:1px solid var(--line);padding:14px 0;color:inherit}.meal:first-child{border-top:0}.mealicon{width:43px;height:43px;background:#f0f5f1;border-radius:13px;display:grid;place-items:center;font-size:22px;flex:none}
-.food{display:flex;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:11px 0}.danger{border:0;background:transparent;color:#dc2626;padding:4px}.habit{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px;background:#fff}
-input,select{width:100%;padding:12px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--text);font:inherit}label{display:block;font-size:13px;font-weight:700;margin:10px 0 6px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.hidden{display:none!important}.notice{background:#fff8df;border:1px solid #f0d98c;border-radius:13px;padding:12px;font-size:13px;color:#6d5411}.searchbox{display:flex;gap:8px}.searchbox input{flex:1}.result{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px;background:#fff}.result button{margin-top:9px}.pill{display:inline-block;background:#eef7ef;border-radius:999px;padding:4px 8px;font-size:12px;color:#166534}
-svg{width:100%;height:auto;display:block}@media(max-width:420px){.formgrid{grid-template-columns:1fr}.grid{gap:5px}.card{padding:13px}}
+:root{--g:#16a34a;--g2:#eaf7ed;--bg:#f5f7f5;--card:#fff;--txt:#15231a;--muted:#708077;--line:#e1e8e2;--red:#dc2626}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:680px;margin:auto;padding:18px 14px 95px}.top{display:flex;align-items:center;gap:11px;margin-bottom:17px}.logo{width:50px;height:50px;border-radius:16px;background:var(--g);display:grid;place-items:center;color:#fff;font-size:27px}h1,h2,h3,p{margin:0}.muted{color:var(--muted)}.small{font-size:13px}
+nav{display:flex;gap:4px;background:#e9f0eb;padding:4px;border-radius:15px;margin-bottom:15px}nav button{flex:1;border:0;background:transparent;padding:10px 3px;border-radius:11px;color:var(--muted);font-weight:700;font-size:12px}nav button.active{background:#fff;color:var(--g);box-shadow:0 1px 5px #0001}
+.card{background:var(--card);border:1px solid var(--line);border-radius:19px;padding:15px;margin:12px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:13px}.stat{background:var(--g2);padding:10px;border-radius:13px;text-align:center}.stat b{display:block}.stat span{font-size:12px;color:var(--muted)}
+.bar{height:11px;border-radius:99px;background:#e6ece7;overflow:hidden}.bar>div{height:100%;background:var(--g);border-radius:99px}
+.meal{border-top:1px solid var(--line);padding:14px 0}.meal:first-child{border-top:0}.mealhead{display:flex;align-items:center;gap:10px}.mealicon{width:42px;height:42px;border-radius:13px;background:#f0f5f1;display:grid;place-items:center;font-size:21px}.mealbody{flex:1}.foodrow{display:flex;align-items:center;justify-content:space-between;gap:8px;border-top:1px solid #edf1ee;padding:9px 0 2px 52px}.foodrow:first-child{margin-top:8px}
+button{font:inherit}.primary{border:0;background:var(--g);color:#fff;border-radius:12px;padding:11px 14px;font-weight:800}.outline{border:1px solid var(--line);background:#fff;color:var(--txt);border-radius:11px;padding:9px 12px;font-weight:700}.ghost{border:0;background:transparent;color:var(--muted);padding:5px}.danger{border:0;background:#fff0f0;color:var(--red);border-radius:9px;padding:6px 8px}
+.addmeal{width:100%;border:1px dashed #b9cbbd;background:#f8fbf8;color:var(--g);padding:10px;border-radius:11px;font-weight:800;margin-top:7px}
+.hidden{display:none!important}.search{display:flex;gap:7px}.search input{flex:1}input,select{width:100%;border:1px solid var(--line);background:#fff;border-radius:11px;padding:12px;color:var(--txt);font:inherit}
+.modal{position:fixed;inset:0;background:#0007;z-index:20;display:flex;align-items:flex-end}.sheet{background:#fff;width:100%;max-width:680px;margin:auto 0 0;border-radius:24px 24px 0 0;max-height:92vh;overflow:auto;padding:14px 14px 30px}.handle{width:42px;height:5px;background:#d8dfda;border-radius:5px;margin:0 auto 12px}
+.tabs{display:flex;gap:6px;margin:12px 0}.tabs button{flex:1;border:0;background:#f0f4f1;padding:10px;border-radius:10px;font-weight:800;color:var(--muted)}.tabs button.active{background:var(--g2);color:var(--g)}
+.result{border:1px solid var(--line);border-radius:14px;padding:12px;margin-top:8px}.result .select{margin-top:9px;width:100%}.pill{display:inline-block;background:var(--g2);color:#166534;border-radius:99px;padding:4px 8px;font-size:12px}
+.habit{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:14px;padding:11px;margin-top:8px}.habitmain{flex:1}.habitadd{border:0;background:var(--g2);color:var(--g);padding:8px 11px;border-radius:10px;font-weight:800}
+.qty{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.actions{display:flex;gap:8px;margin-top:12px}.actions>*{flex:1}
+.notice{background:#fff8dd;border:1px solid #ecd58a;padding:10px;border-radius:11px;font-size:13px;color:#695315}
+.listrow{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding:11px 0}.listrow:first-child{border-top:0}
+svg{width:100%;height:auto}
+@media(max-width:420px){main{padding-left:11px;padding-right:11px}.grid3{gap:4px}}
 </style>
 </head>
 <body>
 <main>
-<header class="head"><div class="logo">🍏</div><div><h1>Mi Control</h1><p class="muted">Calorías · Alimentación · Peso</p></div></header>
-<nav aria-label="Secciones">
-<button class="active" data-tab="today">🏠 Hoy</button>
-<button data-tab="history">📋 Historial</button>
-<button data-tab="weight">⚖️ Peso</button>
-<button data-tab="settings">⚙️ Ajustes</button>
-</nav>
+<div class="top"><div class="logo">🍏</div><div><h1>Mi Control</h1><p class="muted">Tu control diario</p></div></div>
+<nav><button class="active" data-page="today">🏠 Hoy</button><button data-page="history">📋 Historial</button><button data-page="weight">⚖️ Peso</button><button data-page="settings">⚙️ Ajustes</button></nav>
 
 <section id="today">
-<div class="row"><button class="secondary" id="prev">‹</button><div style="text-align:center"><b id="dateTitle"></b><div class="small muted" id="dateSub"></div></div><button class="secondary" id="next">›</button></div>
-<div class="card">
-<div class="row"><b>Resumen diario</b><span class="small muted">kcal</span></div>
-<div style="margin:12px 0 8px"><span style="font-size:40px;font-weight:800" id="total">0</span> <span class="muted">/ <span id="goal">2200</span> kcal</span></div>
-<div class="bar"><div id="fill" style="width:0%"></div></div>
-<div class="row small" style="margin-top:8px"><span class="muted">Consumidas</span><b id="remaining" style="color:var(--green)">2200 restantes</b></div>
-<div class="grid" style="margin-top:15px"><div class="metric"><b id="p">0 g</b><span>Proteínas</span></div><div class="metric"><b id="c">0 g</b><span>Hidratos</span></div><div class="metric"><b id="f">0 g</b><span>Grasas</span></div></div>
-</div>
+<div class="row"><button class="outline" id="prevDay">‹</button><div style="text-align:center"><b id="dateLabel"></b><div class="small muted" id="dateLong"></div></div><button class="outline" id="nextDay">›</button></div>
 
 <div class="card">
-<div class="row" style="margin-bottom:4px"><h2 style="font-size:18px">Mis comidas</h2><span class="small muted">Añade alimentos</span></div>
-<div id="meals"></div>
+<div class="row"><b>Hoy</b><span class="small muted">Objetivo <span id="goalTop"></span> kcal</span></div>
+<div style="margin:9px 0 8px"><b style="font-size:39px" id="totalKcal">0</b> <span class="muted">kcal</span></div>
+<div class="bar"><div id="progress"></div></div>
+<div class="row small" style="margin-top:7px"><span class="muted">Restantes</span><b id="remaining">2200 kcal</b></div>
+<div class="grid3"><div class="stat"><b id="pTotal">0 g</b><span>Proteína</span></div><div class="stat"><b id="cTotal">0 g</b><span>Hidratos</span></div><div class="stat"><b id="fTotal">0 g</b><span>Grasas</span></div></div>
 </div>
 
-<div class="card">
-<div class="row"><div><h2 style="font-size:18px">⭐ Comidas habituales</h2><p class="muted small" style="margin-top:4px">Añádelas con un toque.</p></div></div>
-<div id="habits"></div>
-</div>
-
-<button class="primary" style="width:100%" id="openAdd">＋ Añadir alimento</button>
-
-<div class="card hidden" id="addBox">
-<div class="row"><h2 style="font-size:18px">Añadir alimento</h2><button class="secondary" id="closeAdd">✕</button></div>
-<label for="meal">Comida</label><select id="meal"><option value="breakfast">Desayuno</option><option value="lunch">Comida</option><option value="snack">Merienda</option><option value="dinner">Cena</option></select>
-
-<div class="card" style="margin:12px 0;padding:12px;background:#f8fbf8">
-<b>🔎 Buscar alimento</b>
-<p class="small muted" style="margin-top:4px">Busca productos de la base de Open Food Facts.</p>
-<div class="searchbox" style="margin-top:9px"><input id="foodSearch" placeholder="Ej. pan integral, yogur, pavo"><button class="primary" id="searchBtn">Buscar</button></div>
-<div id="searchResults"></div>
-<label for="barcode">📷 Código de barras</label>
-<div class="searchbox"><input id="barcode" inputmode="numeric" placeholder="Ej. 8410000000000"><button class="secondary" id="barcodeBtn">Buscar</button></div>
-<p class="small muted" style="margin-top:6px">La cámara automática depende del navegador. Puedes introducir el código manualmente.</p>
-</div>
-
-<label for="name">Alimento</label><input id="name" maxlength="100" placeholder="Ej. Pollo a la plancha">
-<div class="formgrid"><div><label for="kcal">Calorías (kcal)</label><input id="kcal" type="number" min="0" step="1" placeholder="250"></div><div><label for="amount">Cantidad</label><input id="amount" maxlength="30" placeholder="150 g"></div></div>
-<div class="formgrid"><div><label for="protein">Proteínas (g)</label><input id="protein" type="number" min="0" step=".1" placeholder="30"></div><div><label for="carbs">Hidratos (g)</label><input id="carbs" type="number" min="0" step=".1" placeholder="0"></div></div>
-<label for="fat">Grasas (g)</label><input id="fat" type="number" min="0" step=".1" placeholder="5">
-<p id="selectedInfo" class="small muted"></p>
-<p id="error" style="color:#dc2626;font-size:13px;margin-top:8px"></p>
-<div style="display:flex;gap:8px;margin-top:10px"><button class="secondary" style="flex:1" id="saveAsHabit">⭐ Guardar alimento habitual</button><button class="primary" style="flex:1" id="saveFood">Añadir a hoy</button></div>
-</div>
+<div class="card"><div class="row"><h2 style="font-size:18px">Comidas</h2><span class="small muted">toca + para añadir</span></div><div id="meals"></div></div>
 </section>
 
-<section id="history" class="hidden"><div class="card"><h2>Historial de alimentación</h2><p class="muted small" style="margin-top:5px">Días con alimentos registrados.</p><div id="foodHistory" style="margin-top:10px"></div></div></section>
+<section id="history" class="hidden"><div class="card"><h2>Historial</h2><p class="muted small" style="margin-top:5px">Tus días guardados.</p><div id="historyList" style="margin-top:10px"></div></div></section>
 
 <section id="weight" class="hidden">
-<div class="card"><h2>Control semanal del peso</h2><p class="muted small" style="margin-top:5px">Registra tu peso una vez por semana.</p><label for="weightDate">Fecha</label><input id="weightDate" type="date"><label for="weightValue">Peso (kg)</label><input id="weightValue" type="number" min="20" max="400" step=".1" placeholder="82.5"><p id="weightError" style="color:#dc2626;font-size:13px;margin-top:8px"></p><button class="primary" style="width:100%;margin-top:10px" id="saveWeight">Guardar peso</button></div>
-<div class="card"><h2>Evolución del peso</h2><div id="chart" style="margin-top:12px"></div><div id="latest" style="margin-top:10px"></div></div>
-<div class="card"><h3>Registros</h3><div id="weightList"></div></div>
+<div class="card"><h2>Peso</h2><label>Fecha</label><input type="date" id="weightDate"><label style="margin-top:9px">Peso (kg)</label><input type="number" id="weightValue" step=".1" min="20" max="400" placeholder="82,5"><button class="primary" style="width:100%;margin-top:10px" id="saveWeight">Guardar peso</button><p class="small" id="weightMsg" style="margin-top:7px;color:var(--g)"></p></div>
+<div class="card"><h3>Evolución</h3><div id="chart" style="margin-top:12px"></div><div id="weightList"></div></div>
 </section>
 
 <section id="settings" class="hidden">
-<div class="card">
-<h2>⚙️ Ajustes</h2><p class="muted small" style="margin-top:5px">Personaliza tu objetivo diario.</p>
-<label for="calorieGoal">Objetivo de calorías al día</label>
-<div class="searchbox"><input id="calorieGoal" type="number" min="500" max="10000" step="50" inputmode="numeric"><span style="padding:12px 0">kcal</span></div>
-<button class="primary" style="width:100%;margin-top:10px" id="saveCalorieGoal">Guardar objetivo</button>
-<p id="goalSaved" class="small" style="margin-top:8px;color:#15803d"></p>
-</div>
-<div class="card"><h3>Datos</h3><p class="small muted" style="margin-top:5px">Los datos se guardan en este navegador/dispositivo.</p></div>
+<div class="card"><h2>⚙️ Ajustes</h2><p class="muted small" style="margin-top:4px">Tu objetivo diario de calorías.</p><label>Calorías objetivo</label><div class="search"><input type="number" id="goalInput" min="500" max="10000" step="50"><span style="padding:12px 0">kcal</span></div><button class="primary" style="width:100%;margin-top:10px" id="saveGoal">Guardar objetivo</button><p id="goalMsg" class="small" style="margin-top:8px;color:var(--g)"></p></div>
 </section>
-
-<p class="small muted" style="text-align:center;margin-top:18px">Mi Control v4 · búsqueda de alimentos · datos locales</p>
 </main>
 
+<!-- ADD SHEET -->
+<div class="modal hidden" id="addModal">
+<div class="sheet">
+<div class="handle"></div>
+<div class="row"><div><h2 style="font-size:21px">Añadir alimento</h2><p class="small muted" id="mealName"></p></div><button class="outline" id="closeModal">Cerrar</button></div>
+<div class="tabs"><button class="active" data-addtab="search">🔎 Buscar</button><button data-addtab="habits">⭐ Habituales</button><button data-addtab="manual">✍️ Manual</button></div>
+
+<div id="searchTab">
+<div class="search"><input id="query" placeholder="Busca pavo, yogur, pan..."><button class="primary" id="doSearch">Buscar</button></div>
+<p class="small muted" style="margin-top:7px">Productos y valores nutricionales de Open Food Facts.</p>
+<div id="results"></div>
+<div style="margin-top:14px"><label>Código de barras</label><div class="search"><input id="barcode" inputmode="numeric" placeholder="EAN / UPC"><button class="outline" id="barcodeSearch">Buscar</button></div></div>
+</div>
+
+<div id="habitsTab" class="hidden"><div id="habitList"></div><div id="emptyHabits" class="notice hidden">Todavía no tienes habituales. Busca un alimento y pulsa ⭐ Guardar habitual.</div></div>
+
+<div id="manualTab" class="hidden">
+<label>Nombre</label><input id="mName" placeholder="Ej. 3 huevos"><div class="qty"><div><label>Cantidad</label><input id="mAmount" placeholder="3 unidades"></div><div><label>Calorías</label><input id="mKcal" type="number" step="1" placeholder="210"></div></div><div class="qty"><div><label>Proteínas</label><input id="mP" type="number" step=".1" placeholder="18"></div><div><label>Hidratos</label><input id="mC" type="number" step=".1" placeholder="1"></div></div><label>Grasas</label><input id="mF" type="number" step=".1" placeholder="15"><div class="actions"><button class="outline" id="manualHabit">⭐ Guardar habitual</button><button class="primary" id="manualAdd">Añadir</button></div>
+</div>
+
+<div id="selected" class="hidden card" style="margin:14px 0 0;background:#f8fbf8">
+<div class="row"><div><b id="selectedName"></b><div class="small muted" id="selectedNutrients"></div></div><button class="ghost" id="cancelSelected">✕</button></div>
+<div class="qty"><div><label>Cantidad (g)</label><input id="selectedGrams" type="number" min="1" step="1" value="100"></div><div><label>Calorías</label><input id="selectedKcal" type="number" step="1"></div></div>
+<div class="small muted" style="margin-top:6px">Al cambiar gramos se calculan automáticamente kcal y macros.</div>
+<div class="actions"><button class="outline" id="saveSelectedHabit">⭐ Guardar habitual</button><button class="primary" id="addSelected">Añadir a la comida</button></div>
+</div>
+</div></div>
+
 <script>
-const meals=[['breakfast','Desayuno','🌅'],['lunch','Comida','🍽️'],['snack','Merienda','☕'],['dinner','Cena','🌙']];
-const todayKey=()=>key(new Date());
-const state={goal:2200,date:todayKey(),foods:{},weights:[],habits:[]};
+const MEALS={breakfast:['Desayuno','🌅'],lunch:['Comida','🍽️'],snack:['Merienda','☕'],dinner:['Cena','🌙']};
+const KEY='mi-control-v1';
+let S={goal:2200,foods:{},weights:[],habits:[],date:''};
+let currentMeal='breakfast',selected=null,results=[];
 const $=id=>document.getElementById(id);
-function key(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function dateObj(s){let a=s.split('-').map(Number);return new Date(a[0],a[1]-1,a[2])}
-function dateText(s){return dateObj(s).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function list(){return state.foods[state.date]||[]}
-function total(){return list().reduce((a,f)=>({kcal:a.kcal+Number(f.kcal||0),p:a.p+Number(f.p||0),c:a.c+Number(f.c||0),f:a.f+Number(f.f||0)}),{kcal:0,p:0,c:0,f:0})}
-function n(id){return Math.max(0,Number($(id).value)||0)}
+const today=()=>{let d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+const dateObj=s=>{let a=s.split('-').map(Number);return new Date(a[0],a[1]-1,a[2])};
+const key=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const longDate=s=>dateObj(s).toLocaleDateString('es-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=x=>Number.isFinite(Number(x))?Number(x):0;
+function save(){localStorage.setItem(KEY,JSON.stringify(S))}
+function load(){try{let x=JSON.parse(localStorage.getItem(KEY)||'null');if(x){S.goal=num(x.goal)||2200;S.foods=x.foods||{};S.weights=x.weights||[];S.habits=x.habits||[]}}catch(e){} S.date=today();save()}
+function foods(){return S.foods[S.date]||[]}
+function totals(){return foods().reduce((a,f)=>{a.k+=num(f.kcal);a.p+=num(f.p);a.c+=num(f.c);a.f+=num(f.f);return a},{k:0,p:0,c:0,f:0})}
 function render(){
-  $('dateTitle').textContent=state.date===todayKey()?'Hoy':dateText(state.date); $('dateSub').textContent=dateText(state.date);
-  let t=total(); $('total').textContent=Math.round(t.kcal).toLocaleString('es-ES'); $('goal').textContent=state.goal.toLocaleString('es-ES');
-  $('remaining').textContent=t.kcal<=state.goal?Math.round(state.goal-t.kcal)+' restantes':'-'+Math.round(t.kcal-state.goal)+' por encima';
-  $('remaining').style.color=t.kcal>state.goal?'#dc2626':'var(--green)';
-  $('fill').style.width=Math.min(100,state.goal? t.kcal/state.goal*100:0)+'%';
-  $('p').textContent=Math.round(t.p*10)/10+' g'; $('c').textContent=Math.round(t.c*10)/10+' g'; $('f').textContent=Math.round(t.f*10)/10+' g';
-  $('meals').innerHTML=meals.map(m=>{
-    let fs=list().filter(f=>f.meal===m[0]),sum=fs.reduce((a,f)=>a+Number(f.kcal||0),0);
-    return `<div><button class="meal" data-meal="${m[0]}"><span class="mealicon">${m[2]}</span><span style="flex:1"><b>${m[1]}</b><span class="small muted" style="display:block">${fs.length} alimento${fs.length===1?'':'s'}</span></span><b>${Math.round(sum)} kcal</b><span class="muted">›</span></button>
-    <div>${fs.map(f=>`<div class="food"><div><b>${esc(f.name)}</b><div class="small muted">${esc(f.amount||'')} ${f.amount?'· ':''}P ${Number(f.p||0).toFixed(1)}g · HC ${Number(f.c||0).toFixed(1)}g · G ${Number(f.f||0).toFixed(1)}g</div></div><div style="display:flex;align-items:center;gap:5px"><b style="white-space:nowrap">${Math.round(f.kcal)} kcal</b><button class="danger" data-del="${f.id}">✕</button></div></div>`).join('')}</div>
-    ${fs.length?`<button class="secondary small" style="margin:6px 0 2px" data-savehabit="${m[0]}">⭐ Guardar comida completa como habitual</button>`:''}</div>`;
-  }).join('');
-  document.querySelectorAll('[data-meal]').forEach(b=>b.onclick=()=>openAdd(b.dataset.meal));
-  document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{state.foods[state.date]=list().filter(f=>String(f.id)!==String(b.dataset.del));save();render()});
-  document.querySelectorAll('[data-savehabit]').forEach(b=>b.onclick=()=>saveHabit(b.dataset.savehabit));
-  renderHistory(); renderWeights(); renderHabits();
+ $('dateLabel').textContent=S.date===today()?'Hoy':dateObj(S.date).toLocaleDateString('es-ES',{day:'numeric',month:'short'});
+ $('dateLong').textContent=longDate(S.date);
+ $('goalTop').textContent=S.goal.toLocaleString('es-ES');
+ let t=totals();$('totalKcal').textContent=Math.round(t.k).toLocaleString('es-ES');$('progress').style.width=Math.min(100,t.k/S.goal*100)+'%';
+ let rem=S.goal-t.k;$('remaining').textContent=rem>=0?Math.round(rem)+' kcal':Math.round(-rem)+' kcal de más';$('remaining').style.color=rem<0?'var(--red)':'var(--g)';
+ $('pTotal').textContent=t.p.toFixed(1)+' g';$('cTotal').textContent=t.c.toFixed(1)+' g';$('fTotal').textContent=t.f.toFixed(1)+' g';
+ $('meals').innerHTML=Object.entries(MEALS).map(([id,m])=>{let fs=foods().filter(f=>f.meal===id),k=fs.reduce((a,f)=>a+num(f.kcal),0);return `<div class="meal"><div class="mealhead"><div class="mealicon">${m[1]}</div><div class="mealbody"><b>${m[0]}</b><div class="small muted">${Math.round(k)} kcal · ${fs.length} alimento${fs.length===1?'':'s'}</div></div><button class="primary" data-add="${id}">＋ Añadir</button></div>${fs.map(f=>`<div class="foodrow"><div style="flex:1"><b>${esc(f.name)}</b><div class="small muted">${esc(f.amount||'')} · P ${num(f.p).toFixed(1)} · HC ${num(f.c).toFixed(1)} · G ${num(f.f).toFixed(1)}</div></div><b>${Math.round(num(f.kcal))}</b><button class="danger" data-remove="${f.id}">Eliminar</button></div>`).join('')}</div>`}).join('');
+ document.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>openAdd(b.dataset.add));
+ document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>removeFood(b.dataset.remove));
+ $('goalInput').value=S.goal;
+ renderHistory();renderWeights();renderHabits();
 }
-function openAdd(meal){$('meal').value=meal||'breakfast';$('addBox').classList.remove('hidden');$('name').focus()}
-function closeAdd(){$('addBox').classList.add('hidden')}
-function clearFoodForm(){['name','kcal','amount','protein','carbs','fat'].forEach(id=>$(id).value='');$('selectedInfo').textContent='';$('error').textContent=''}
-function currentFood(){
-  return {name:$('name').value.trim(),kcal:Number($('kcal').value),amount:$('amount').value.trim(),p:n('protein'),c:n('carbs'),f:n('fat'),meal:$('meal').value}
+function removeFood(id){S.foods[S.date]=(S.foods[S.date]||[]).filter(f=>String(f.id)!==String(id));save();render()}
+function openAdd(meal){currentMeal=meal;$('mealName').textContent=MEALS[meal][0];$('addModal').classList.remove('hidden');showAddTab('search');$('query').focus()}
+function closeModal(){$('addModal').classList.add('hidden');selected=null;$('selected').classList.add('hidden');$('results').innerHTML=''}
+function showAddTab(tab){document.querySelectorAll('[data-addtab]').forEach(b=>b.classList.toggle('active',b.dataset.addtab===tab));$('searchTab').classList.toggle('hidden',tab!=='search');$('habitsTab').classList.toggle('hidden',tab!=='habits');$('manualTab').classList.toggle('hidden',tab!=='manual');if(tab==='habits')renderHabits()}
+function addFood(f){if(!S.foods[S.date])S.foods[S.date]=[];S.foods[S.date].push({...f,meal:currentMeal,id:Date.now()+Math.random()});save();render();closeModal()}
+function saveHabitData(name,f){S.habits.push({id:Date.now()+Math.random(),name,food:{name:f.name,kcal:num(f.kcal),p:num(f.p),c:num(f.c),f:num(f.f),amount:f.amount||'100 g',per100:f.per100||null}});save();renderHabits()}
+function addHabit(id){let h=S.habits.find(x=>String(x.id)===String(id));if(!h)return;addFood({...h.food})}
+function deleteHabit(id){if(!confirm('¿Eliminar este habitual?'))return;S.habits=S.habits.filter(h=>String(h.id)!==String(id));save();renderHabits()}
+function renderHabits(){let el=$('habitList'),empty=$('emptyHabits');if(!S.habits.length){el.innerHTML='';empty.classList.remove('hidden');return}empty.classList.add('hidden');el.innerHTML=S.habits.map(h=>`<div class="habit"><div class="habitmain"><b>${esc(h.name)}</b><div class="small muted">${Math.round(h.food.kcal)} kcal · P ${num(h.food.p).toFixed(1)} · HC ${num(h.food.c).toFixed(1)} · G ${num(h.food.f).toFixed(1)}</div></div><button class="habitadd" data-hadd="${h.id}">Añadir</button><button class="danger" data-hdel="${h.id}">✕</button></div>`).join('');document.querySelectorAll('[data-hadd]').forEach(b=>b.onclick=()=>addHabit(b.dataset.hadd));document.querySelectorAll('[data-hdel]').forEach(b=>b.onclick=()=>deleteHabit(b.dataset.hdel))}
+function productData(p){let n=p.nutriments||{};let k=num(n['energy-kcal_100g']);if(!k&&n['energy_100g'])k=num(n['energy_100g'])/4.184;return {name:p.product_name||p.generic_name||'Producto',kcal:k,p:num(n.proteins_100g),c:num(n.carbohydrates_100g),f:num(n.fat_100g),brand:p.brands||'',quantity:p.quantity||''}}
+async function search(){
+ let q=$('query').value.trim();if(!q)return;$('results').innerHTML='<p class="small muted" style="margin-top:10px">Buscando…</p>';
+ try{
+   // Legacy full-text endpoint is currently the practical Open Food Facts text search endpoint.
+   let u='https://world.openfoodfacts.org/cgi/search.pl?search_terms='+encodeURIComponent(q)+'&search_simple=1&action=process&json=1&page_size=12&lc=es&fields=product_name,generic_name,brands,quantity,nutriments,code';
+   let r=await fetch(u);let d=await r.json();results=(d.products||[]).map(p=>({...p,_data:productData(p)})).filter(p=>p._data.name&&p._data.kcal>0).slice(0,10);
+   if(!results.length){$('results').innerHTML='<div class="notice" style="margin-top:10px">No he encontrado resultados. Prueba con otra palabra o usa “Manual”.</div>';return}
+   $('results').innerHTML=results.map((p,i)=>{let x=p._data;return `<div class="result"><b>${esc(x.name)}</b>${x.brand?`<div class="small muted">${esc(x.brand)}</div>`:''}<div class="small" style="margin-top:5px"><span class="pill">${Math.round(x.kcal)} kcal/100 g</span> · P ${x.p.toFixed(1)} · HC ${x.c.toFixed(1)} · G ${x.f.toFixed(1)}</div><button class="outline select" data-select="${i}">Seleccionar</button></div>`}).join('');
+   document.querySelectorAll('[data-select]').forEach(b=>b.onclick=()=>selectResult(results[Number(b.dataset.select)]));
+ }catch(e){$('results').innerHTML='<div class="notice" style="margin-top:10px">No puedo conectar con la base de alimentos. Comprueba que tienes internet.</div>'}
 }
-function validateFood(f){if(!f.name||!Number.isFinite(f.kcal)||f.kcal<0){$('error').textContent='Indica el alimento y unas calorías válidas.';return false}return true}
-function saveFood(){
-  let f=currentFood(); if(!validateFood(f))return;
-  if(!state.foods[state.date])state.foods[state.date]=[];
-  state.foods[state.date].push({...f,id:Date.now()+Math.random()});
-  clearFoodForm();closeAdd();save();render();
+function selectResult(p){let x=p._data;selected={...x,per100:{kcal:x.kcal,p:x.p,c:x.c,f:x.f}};$('selectedName').textContent=x.name;$('selectedNutrients').textContent=`${Math.round(x.kcal)} kcal/100 g · P ${x.p.toFixed(1)} · HC ${x.c.toFixed(1)} · G ${x.f.toFixed(1)}`;$('selectedGrams').value=100;calcSelected();$('selected').classList.remove('hidden');$('results').innerHTML=''}
+function calcSelected(){if(!selected)return;let g=num($('selectedGrams').value);let r=selected.per100;$('selectedKcal').value=Math.round(r.kcal*g/100)}
+function selectedFood(){let g=num($('selectedGrams').value),r=selected.per100;return {name:selected.name,kcal:r.kcal*g/100,p:r.p*g/100,c:r.c*g/100,f:r.f*g/100,amount:g+' g',per100:r}}
+function saveSelectedHabit(){if(!selected)return;let name=prompt('¿Cómo quieres llamarlo en tus habituales?',selected.name);if(name){let f=selectedFood();saveHabitData(name.trim(),f);alert('⭐ Guardado en habituales')}}
+function addSelected(){if(!selected)return;addFood(selectedFood())}
+async function barcode(){
+ let code=$('barcode').value.trim().replace(/\D/g,'');if(!code)return;
+ $('results').innerHTML='<p class="small muted" style="margin-top:10px">Buscando código…</p>';
+ try{let r=await fetch('https://world.openfoodfacts.org/api/v2/product/'+encodeURIComponent(code)+'?fields=product_name,generic_name,brands,quantity,nutriments,code');let d=await r.json();if(d.status!==1){$('results').innerHTML='<div class="notice">No encuentro ese código.</div>';return}selectResult({_data:productData(d.product)})}catch(e){$('results').innerHTML='<div class="notice">No se ha podido consultar el código.</div>'}
 }
-function habitFromCurrent(){
-  let f=currentFood(); if(!validateFood(f))return false;
-  let name=prompt('Nombre para este alimento habitual:',f.name); if(!name)return false;
-  state.habits.push({id:Date.now()+Math.random(),name:name.trim(),meal:f.meal,foods:[{name:f.name,kcal:f.kcal,amount:f.amount,p:f.p,c:f.c,f:f.f}]});
-  save();renderHabits();return true;
-}
-function saveHabit(mealId){
-  let fs=list().filter(f=>f.meal===mealId);if(!fs.length)return;
-  let mealName=meals.find(m=>m[0]===mealId)?.[1]||'Comida';
-  let name=prompt('Nombre de la comida habitual:',mealName+' habitual');if(!name)return;
-  state.habits.push({id:Date.now()+Math.random(),name:name.trim()||mealName,meal:mealId,foods:fs.map(f=>({name:f.name,kcal:f.kcal,amount:f.amount||'',p:f.p,c:f.c,f:f.f}))});
-  save();renderHabits();
-}
-function addHabit(id){
-  let h=state.habits.find(x=>String(x.id)===String(id));if(!h)return;
-  if(!state.foods[state.date])state.foods[state.date]=[];
-  h.foods.forEach(f=>state.foods[state.date].push({...f,id:Date.now()+Math.random(),meal:h.meal}));
-  save();render();
-}
-function deleteHabit(id){state.habits=state.habits.filter(x=>String(x.id)!==String(id));save();renderHabits()}
-function renderHabits(){
-  let el=$('habits');
-  if(!state.habits.length){el.innerHTML='<p class="muted small" style="margin-top:10px">Todavía no tienes habituales. Puedes guardar un alimento desde el buscador o una comida completa.</p>';return}
-  el.innerHTML=state.habits.map(h=>{
-    let kcal=h.foods.reduce((a,f)=>a+Number(f.kcal||0),0);
-    return `<div class="habit"><div class="row"><div><b>${esc(h.name)}</b><div class="small muted">${h.foods.length} alimento${h.foods.length===1?'':'s'} · ${Math.round(kcal)} kcal</div></div><div style="display:flex;gap:6px"><button class="primary small" data-addhabit="${h.id}">Añadir</button><button class="danger" data-delhabit="${h.id}">✕</button></div></div></div>`;
-  }).join('');
-  document.querySelectorAll('[data-addhabit]').forEach(b=>b.onclick=()=>addHabit(b.dataset.addhabit));
-  document.querySelectorAll('[data-delhabit]').forEach(b=>b.onclick=()=>{if(confirm('¿Eliminar esta habitual?'))deleteHabit(b.dataset.delhabit)});
-}
-function renderHistory(){
-  let ks=Object.keys(state.foods).filter(k=>state.foods[k]?.length).sort().reverse();
-  $('foodHistory').innerHTML=ks.length?ks.map(k=>`<div class="food"><span>${esc(dateText(k))}</span><b>${Math.round(state.foods[k].reduce((a,f)=>a+Number(f.kcal||0),0))} kcal</b></div>`).join(''):'<p class="muted small">Todavía no hay registros.</p>';
-}
-function renderWeights(){
-  let ws=[...state.weights].sort((a,b)=>a.date.localeCompare(b.date));
-  $('weightList').innerHTML=ws.length?[...ws].reverse().map(w=>`<div class="food"><span>${esc(dateText(w.date))}</span><b>${w.value.toLocaleString('es-ES')} kg</b></div>`).join(''):'<p class="muted small">Aún no hay pesajes.</p>';
-  let last=ws[ws.length-1];$('latest').innerHTML=last?`<div class="row"><span class="muted">Último peso</span><b>${last.value.toLocaleString('es-ES')} kg</b></div>`:'';
-  if(ws.length<2){$('chart').innerHTML='<p class="muted small">Registra al menos dos pesajes para ver la gráfica.</p>';return}
-  let min=Math.min(...ws.map(w=>w.value)),max=Math.max(...ws.map(w=>w.value)),range=Math.max(1,max-min),W=600,H=220,pad=35;
-  let pts=ws.map((w,i)=>({x:pad+i*(W-2*pad)/(ws.length-1),y:20+(max-w.value)/range*150,v:w.value,d:w.date}));
-  let path=pts.map((p,i)=>(i?'L':'M')+p.x+','+p.y).join(' ');
-  $('chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}"><line x1="${pad}" y1="20" x2="${pad}" y2="170" stroke="#dfe8e1"/><line x1="${pad}" y1="170" x2="${W-pad}" y2="170" stroke="#dfe8e1"/><text x="3" y="25" font-size="12" fill="#6b7b71">${max.toFixed(1)}</text><text x="3" y="170" font-size="12" fill="#6b7b71">${min.toFixed(1)}</text><path d="${path}" fill="none" stroke="#16a34a" stroke-width="3"/>${pts.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="#16a34a"><title>${p.d}: ${p.v} kg</title></circle>`).join('')}</svg>`;
-}
-function save(){try{localStorage.setItem('mi-control-v1',JSON.stringify(state))}catch(e){}}
-function load(){
-  try{
-    let x=JSON.parse(localStorage.getItem('mi-control-v1'));
-    if(x){state.goal=Number(x.goal)||2200;state.foods=x.foods||{};state.weights=x.weights||[];state.habits=x.habits||[]}
-  }catch(e){}
-  // Always open on the real current day.
-  state.date=todayKey();
-  $('calorieGoal').value=state.goal;
-  $('weightDate').value=state.date;
-}
-function setGoal(){
-  let v=Number($('calorieGoal').value);
-  if(!Number.isFinite(v)||v<500||v>10000){$('goalSaved').textContent='Introduce un objetivo entre 500 y 10.000 kcal.';return}
-  state.goal=Math.round(v);save();render();$('goalSaved').textContent='✅ Objetivo guardado y actualizado.';
-}
-async function searchFoods(){
-  let q=$('foodSearch').value.trim();if(!q){$('searchResults').innerHTML='<p class="small muted" style="margin-top:8px">Escribe un alimento o producto.</p>';return}
-  $('searchResults').innerHTML='<p class="small muted" style="margin-top:8px">Buscando…</p>';
-  try{
-    const url='https://world.openfoodfacts.org/cgi/search.pl?search_terms='+encodeURIComponent(q)+'&search_simple=1&action=process&json=1&page_size=12&lc=es&fields=code,product_name,brands,nutriments,quantity';
-    const r=await fetch(url,{headers:{'Accept':'application/json'}});
-    const data=await r.json();
-    const products=(data.products||[]).filter(p=>p.product_name && p.nutriments && (p.nutriments['energy-kcal_100g']!=null || p.nutriments['energy-kcal']!=null)).slice(0,10);
-    if(!products.length){$('searchResults').innerHTML='<p class="small muted" style="margin-top:8px">No he encontrado productos con información nutricional suficiente. Prueba otro nombre.</p>';return}
-    $('searchResults').innerHTML=products.map((p,i)=>{
-      let n=p.nutriments||{},k=Number(n['energy-kcal_100g']??n['energy-kcal']??0),pr=Number(n.proteins_100g??0),c=Number(n.carbohydrates_100g??0),f=Number(n.fat_100g??0);
-      return `<div class="result"><b>${esc(p.product_name)}</b>${p.brands?`<div class="small muted">${esc(p.brands)}</div>`:''}<div class="small" style="margin-top:5px"><span class="pill">${Math.round(k)} kcal/100 g</span> · P ${pr.toFixed(1)} · HC ${c.toFixed(1)} · G ${f.toFixed(1)}</div><button class="secondary small" data-product="${i}">Seleccionar</button></div>`;
-    }).join('');
-    window._searchProducts=products;
-    document.querySelectorAll('[data-product]').forEach(b=>b.onclick=()=>selectProduct(window._searchProducts[Number(b.dataset.product)]));
-  }catch(e){$('searchResults').innerHTML='<p class="small" style="color:#dc2626;margin-top:8px">No se ha podido conectar con la base de datos. Comprueba la conexión a internet.</p>'}
-}
-function selectProduct(p){
-  let n=p.nutriments||{},k=Number(n['energy-kcal_100g']??n['energy-kcal']??0),pr=Number(n.proteins_100g??0),c=Number(n.carbohydrates_100g??0),f=Number(n.fat_100g??0);
-  $('name').value=p.product_name||'';$('amount').value='100 g';$('kcal').value=Math.round(k);$('protein').value=pr.toFixed(1);$('carbs').value=c.toFixed(1);$('fat').value=f.toFixed(1);
-  $('selectedInfo').textContent='Valores por 100 g. Cambia la cantidad si necesitas otra ración y ajusta las kcal/macros.';
-  $('searchResults').innerHTML='';
-  // keep original product metadata for future use
-}
-async function searchBarcode(){
-  let code=$('barcode').value.trim().replace(/\D/g,'');if(!code){$('selectedInfo').textContent='Introduce un código de barras.';return}
-  $('selectedInfo').textContent='Buscando producto…';
-  try{
-    const url='https://world.openfoodfacts.org/api/v2/product/'+encodeURIComponent(code)+'?fields=code,product_name,brands,nutriments,quantity';
-    const r=await fetch(url,{headers:{'Accept':'application/json'}});
-    const data=await r.json();
-    if(data.status!==1||!data.product){$('selectedInfo').textContent='No he encontrado ese código en Open Food Facts.';return}
-    selectProduct(data.product);
-    $('selectedInfo').textContent='Producto encontrado por código de barras. Valores por 100 g.';
-  }catch(e){$('selectedInfo').textContent='No se ha podido consultar el código. Comprueba la conexión.'}
-}
-document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));
-  ['today','history','weight','settings'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.tab));
-  if(b.dataset.tab==='settings')$('calorieGoal').value=state.goal;
-});
-$('prev').onclick=()=>{let d=dateObj(state.date);d.setDate(d.getDate()-1);state.date=key(d);render()};
-$('next').onclick=()=>{let d=dateObj(state.date);d.setDate(d.getDate()+1);state.date=key(d);render()};
-$('openAdd').onclick=()=>openAdd();$('closeAdd').onclick=closeAdd;$('saveFood').onclick=saveFood;$('saveAsHabit').onclick=habitFromCurrent;
-$('searchBtn').onclick=searchFoods;$('foodSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchFoods()});$('barcodeBtn').onclick=searchBarcode;
-$('saveCalorieGoal').onclick=setGoal;
-$('saveWeight').onclick=()=>{let v=Number($('weightValue').value),d=$('weightDate').value;if(!d||!Number.isFinite(v)||v<20||v>400){$('weightError').textContent='Introduce un peso válido y una fecha.';return}let i=state.weights.findIndex(w=>w.date===d);if(i>=0)state.weights[i].value=v;else state.weights.push({date:d,value:v});$('weightValue').value='';$('weightError').textContent='';save();renderWeights()};
-load();render();
+function manualData(){return {name:$('mName').value.trim(),amount:$('mAmount').value.trim(),kcal:num($('mKcal').value),p:num($('mP').value),c:num($('mC').value),f:num($('mF').value)}}
+function manualAdd(){let f=manualData();if(!f.name||!f.kcal){alert('Pon al menos nombre y calorías.');return}addFood(f)}
+function manualHabit(){let f=manualData();if(!f.name||!f.kcal){alert('Pon al menos nombre y calorías.');return}let name=prompt('Nombre para el habitual:',f.name);if(name)saveHabitData(name.trim(),f)}
+function renderHistory(){let ks=Object.keys(S.foods).filter(k=>(S.foods[k]||[]).length).sort().reverse();$('historyList').innerHTML=ks.length?ks.map(k=>`<div class="listrow"><span>${esc(longDate(k))}</span><b>${Math.round((S.foods[k]||[]).reduce((a,f)=>a+num(f.kcal),0))} kcal</b></div>`).join(''):'<p class="muted small">Todavía no hay días registrados.</p>'}
+function renderWeights(){let ws=[...S.weights].sort((a,b)=>a.date.localeCompare(b.date));$('weightList').innerHTML=ws.length?'<div style="margin-top:10px">'+[...ws].reverse().map(w=>`<div class="listrow"><span>${esc(w.date)}</span><b>${num(w.value).toLocaleString('es-ES')} kg</b></div>`).join('')+'</div>':'<p class="muted small" style="margin-top:10px">Sin registros.</p>';if(ws.length<2){$('chart').innerHTML='<p class="muted small">Registra al menos dos pesos para ver la gráfica.</p>';return}let min=Math.min(...ws.map(w=>num(w.value))),max=Math.max(...ws.map(w=>num(w.value))),range=Math.max(1,max-min),W=600,H=210,pad=35,pts=ws.map((w,i)=>({x:pad+i*(W-2*pad)/(ws.length-1),y:20+(max-w.value)/range*145,v:w.value}));let path=pts.map((p,i)=>(i?'L':'M')+p.x+','+p.y).join(' ');$('chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}"><line x1="${pad}" y1="20" x2="${pad}" y2="165" stroke="#dfe8e1"/><line x1="${pad}" y1="165" x2="${W-pad}" y2="165" stroke="#dfe8e1"/><path d="${path}" fill="none" stroke="#16a34a" stroke-width="3"/>${pts.map(p=>`<circle cx="${p.x}" cy="${p.y}" r="4" fill="#16a34a"/>`).join('')}</svg>`}
+document.querySelectorAll('[data-page]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x===b));['today','history','weight','settings'].forEach(id=>$(id).classList.toggle('hidden',id!==b.dataset.page));if(b.dataset.page==='settings')$('goalInput').value=S.goal});
+document.querySelectorAll('[data-addtab]').forEach(b=>b.onclick=()=>showAddTab(b.dataset.addtab));
+$('closeModal').onclick=closeModal;$('prevDay').onclick=()=>{let d=dateObj(S.date);d.setDate(d.getDate()-1);S.date=key(d);render()};$('nextDay').onclick=()=>{let d=dateObj(S.date);d.setDate(d.getDate()+1);S.date=key(d);render()};
+$('doSearch').onclick=search;$('query').addEventListener('keydown',e=>{if(e.key==='Enter')search()});$('barcodeSearch').onclick=barcode;$('selectedGrams').oninput=calcSelected;$('cancelSelected').onclick=()=>{$('selected').classList.add('hidden');selected=null};
+$('addSelected').onclick=addSelected;$('saveSelectedHabit').onclick=saveSelectedHabit;$('manualAdd').onclick=manualAdd;$('manualHabit').onclick=manualHabit;
+$('saveGoal').onclick=()=>{let v=num($('goalInput').value);if(v<500||v>10000){$('goalMsg').textContent='Usa un valor entre 500 y 10.000 kcal.';return}S.goal=Math.round(v);save();render();$('goalMsg').textContent='✅ Objetivo actualizado';};
+$('saveWeight').onclick=()=>{let d=$('weightDate').value,v=num($('weightValue').value);if(!d||v<20||v>400){$('weightMsg').textContent='Introduce una fecha y peso válidos.';return}let old=S.weights.find(x=>x.date===d);if(old)old.value=v;else S.weights.push({date:d,value:v});save();renderWeights();$('weightValue').value='';$('weightMsg').textContent='✅ Guardado'};
+load();$('weightDate').value=S.date;render();
 </script>
 </body>
 </html>
